@@ -1,0 +1,206 @@
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 90px 10% 0;
+    /* padding-top accounts for fixed header */
+    background: var(--bg-color);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Decorations */
+.dec-circle {
+    position: absolute;
+    top: 20%;
+    right: 40%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 2px,
+            rgba(255, 255, 255, 0.1) 2px,
+            rgba(255, 255, 255, 0.1) 4px);
+}
+
+.dec-star {
+    position: absolute;
+    top: 15%;
+    right: 15%;
+    color: var(--button-color);
+    font-size: 2rem;
+    transform: rotate(15deg);
+}
+
+.dec-dots {
+    position: absolute;
+    top: 80%;
+    left: -30px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    background-image: repeating-linear-gradient(45deg,
+            transparent,
+            transparent 3px,
+            rgba(0, 0, 0, 0.3) 3px,
+            rgba(0, 0, 0, 0.4) 6px);
+    z-index: 3;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    flex: 1;
+    max-width: 600px;
+    position: relative;
+    z-index: 3;
+    margin-top: -1rem;
+}
+
+.hero-title {
+    font-size: 3.8rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.font-light {
+    font-weight: 300;
+}
+
+.highlight-blue {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+    max-width: 95%;
+    min-height: 50px;
+}
+
+.hero-buttons {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.btn-primary {
+    background: var(--button-color);
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+}
+
+.btn-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+    color: var(--primary-color);
+}
+
+.arrow-icon {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.btn-link:hover .arrow-icon {
+    transform: translateX(5px);
+}
+
+.hero-image-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    margin-top: -1rem;
+}
+
+.hero-image-bg-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: transparent;
+    border: 2px solid rgba(59, 130, 246, 0.15);
+    box-shadow: 0 0 60px rgba(59, 130, 246, 0.15);
+    z-index: 1;
+}
+
+.hero-image-container {
+    position: relative;
+    z-index: 2;
+    width: 380px;
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgba(59, 130, 246, 0.6);
+    background-color: var(--bg-color);
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    transform: scale(1.45);
+    filter: grayscale(15%) contrast(1.1) brightness(0.98);
+}
+
+.mock-badge {
+    position: absolute;
+    bottom: -60px;
+    right: -50px;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: rgba(15, 15, 15, 0.45);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-weight: 500;
+    z-index: 3;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+    transform: rotate(-15deg);
+}

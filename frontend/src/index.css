@@ -1,0 +1,39 @@
+:root {
+  --primary-color: #2563eb;
+  /* Bright blue for text highlights */
+  --button-color: #6366f1;
+  /* Purple/Blue for buttons */
+  --bg-color: #0c0c0c;
+  /* Very dark background */
+  --bg-alt: #121212;
+  --card-bg: #151515;
+  /* Dark cards */
+  --text-primary: #ffffff;
+  /* White text */
+  --text-secondary: #9ca3af;
+  /* Gray text */
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: white;
+}
