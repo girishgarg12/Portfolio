@@ -23,7 +23,7 @@ const Header = () => {
             {/* Main navigation */}
             <nav className="main-nav">
                 <div className="logo">
-                    <span className="logo-icon">{'<'}</span>Girish<span className="logo-icon">{' />'}</span>
+                    <span>G</span><span style={{ color: 'var(--primary-color)' }}>G</span>
                 </div>
 
                 <ul className="nav-list">
