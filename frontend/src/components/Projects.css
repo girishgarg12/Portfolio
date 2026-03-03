@@ -1,56 +1,196 @@
 /* Additions or overrides for Projects layout based on App.css */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 2.5rem;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.modern-card {
-    background: #111111;
-    border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+.projects-container {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    gap: 6rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
 }
 
-.modern-card:hover {
+.project-row {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Optional subtle fade-in effect on hover */
+.project-row:hover {
     transform: translateY(-5px);
-    border-color: rgba(37, 99, 235, 0.3);
-    /* primary color */
 }
 
-.project-image-placeholder {
-    height: 150px;
-    background: #080808;
+.reverse-row {
+    flex-direction: row-reverse;
+}
+
+.project-image-wrapper {
+    flex: 1.25;
+    /* Make image container larger relative to details */
+    border-radius: 16px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.project-row:hover .project-image-wrapper {
+    box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
+    border-color: rgba(37, 99, 235, 0.3);
+}
+
+.project-image-placeholder.mockup-style {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    height: auto;
+    background: linear-gradient(135deg, #18181b 0%, #09090b 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
     color: var(--text-primary);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+}
+
+/* Subtle glow effect for mockup */
+.project-image-placeholder.mockup-style::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    background: rgba(37, 99, 235, 0.2);
+    filter: blur(80px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+.project-image-placeholder.mockup-style span {
+    z-index: 1;
+}
+
+.project-image-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.project-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-name {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.project-description {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.project-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.project-features li {
+    position: relative;
+    padding-left: 1.5rem;
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.project-features li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--primary-color);
+    font-weight: bold;
 }
 
 .tech-stack {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
 }
 
 .tech-pill {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    padding: 0.4rem 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.project-row:hover .tech-pill {
     background: rgba(37, 99, 235, 0.1);
     color: var(--primary-color);
-    padding: 0.3rem 0.8rem;
-    border-radius: 20px;
-    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-color: rgba(37, 99, 235, 0.2);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.btn-secondary {
+    padding: 0.7rem 1.8rem;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
 .mt-4 {
-    margin-top: 1.5rem;
+    margin-top: 0;
+}
+
+@media (max-width: 992px) {
+
+    .project-row,
+    .reverse-row {
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+
+    .project-image-wrapper,
+    .project-details {
+        width: 100%;
+        flex: none;
+    }
 }

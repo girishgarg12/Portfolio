@@ -1,4 +1,7 @@
 import React from 'react';
+import skillCertsImg from '../assets/images/skillcerts_image.png';
+import nexaMartImg from '../assets/images/nexamart_image.png';
+import configScannerImg from '../assets/images/ConfigScanner_image.png';
 import './Projects.css';
 
 const Projects = () => {
@@ -13,71 +16,85 @@ const Projects = () => {
                 </p>
             </div>
 
-            <div className="projects-grid">
-                {/* Project 1 */}
-                <div className="project-card modern-card">
-                    <div className="project-image-placeholder">
-                        <span>🏷️ SkillCerts</span>
+            <div className="projects-container">
+                {/* Project 1: SkillCerts */}
+                <div className="project-row">
+                    <div className="project-image-wrapper">
+                        <img src={skillCertsImg} alt="SkillCerts Preview" className="project-image-img" />
                     </div>
-                    <div className="project-info">
-                        <h3>SkillCerts – Role-Based Learning</h3>
-                        <p>
+                    <div className="project-details">
+                        <h3 className="project-name">SkillCerts – Role-Based Learning</h3>
+                        <p className="project-description">
                             MERN-based learning platform with JWT authentication and Role-Based Access Control (RBAC).
-                            Features dedicated Learner/Instructor dashboards, secure two-step Razorpay payment integration,
-                            and automated PDF certificate generation.
                         </p>
+                        <ul className="project-features">
+                            <li>Dedicated Learner/Instructor dashboards</li>
+                            <li>Secure two-step Razorpay payment integration</li>
+                            <li>Automated PDF certificate generation</li>
+                        </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">Node.js</span>
                             <span className="tech-pill">React</span>
                             <span className="tech-pill">MongoDB</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-sm">GitHub Repo</a>
+                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
+                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>
 
-                {/* Project 2 */}
-                <div className="project-card modern-card">
-                    <div className="project-image-placeholder">
-                        <span>🛡️ Config Scanner</span>
+                {/* Project 2: Config Scanner */}
+                <div className="project-row reverse-row">
+                    <div className="project-image-wrapper">
+                        <img src={configScannerImg} alt="Config Scanner Preview" className="project-image-img" />
                     </div>
-                    <div className="project-info">
-                        <h3>Config Scanner & Secrets Detector</h3>
-                        <p>
+                    <div className="project-details">
+                        <h3 className="project-name">Config Scanner & Secrets Detector</h3>
+                        <p className="project-description">
                             A Spring Boot DevOps security tool to detect exposed secrets and insecure configurations via static analysis.
-                            Supports multiple file types with recursive regex-based JSON/YAML validation and runs seamlessly via Docker containers.
                         </p>
+                        <ul className="project-features">
+                            <li>Supports multiple file types (JSON, YAML, etc.)</li>
+                            <li>Recursive regex-based structure validation</li>
+                            <li>Runs seamlessly via Docker containers</li>
+                        </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">Java</span>
                             <span className="tech-pill">Spring Boot</span>
                             <span className="tech-pill">Docker</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-sm">GitHub Repo</a>
+                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
+                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>
 
-                {/* Project 3 */}
-                <div className="project-card modern-card">
-                    <div className="project-image-placeholder">
-                        <span>🛒 NexaMart</span>
+                {/* Project 3: NexaMart */}
+                <div className="project-row">
+                    <div className="project-image-wrapper">
+                        <img src={nexaMartImg} alt="NexaMart Preview" className="project-image-img" />
                     </div>
-                    <div className="project-info">
-                        <h3>NexaMart – Marketing Platform</h3>
-                        <p>
+                    <div className="project-details">
+                        <h3 className="project-name">NexaMart – Marketing Platform</h3>
+                        <p className="project-description">
                             Full-stack market directory supporting multi-category listings, seller onboarding,
-                            and bulk CRUD operations. Implements strict session-based authentication with
-                            inactivity timeouts and responsive Tailwind CSS layout.
+                            and bulk CRUD operations.
                         </p>
+                        <ul className="project-features">
+                            <li>Strict session-based authentication with inactivity timeouts</li>
+                            <li>Responsive modern UI structured with Tailwind CSS</li>
+                            <li>Dynamic admin dashboards for streamlined control</li>
+                        </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">PHP</span>
                             <span className="tech-pill">MySQL</span>
                             <span className="tech-pill">Tailwind</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-sm">GitHub Repo</a>
+                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
+                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>
