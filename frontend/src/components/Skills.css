@@ -20,6 +20,16 @@
     margin-bottom: 1.5rem;
 }
 
+@media (max-width: 900px) {
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-header {
+        margin-bottom: 2rem;
+    }
+}
+
 .section-title .highlight-blue {
     color: var(--primary-color);
 }

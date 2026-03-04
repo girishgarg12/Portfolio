@@ -1,10 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import { FaLinkedin, FaGithub, FaBars, FaTimes } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import './Header.css';
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
+
+    const closeMenu = () => {
+        setIsMenuOpen(false);
+    };
 
     useEffect(() => {
         const handleScroll = () => {
@@ -41,15 +50,19 @@ const Header = () => {
                     <span>G</span><span style={{ color: 'var(--primary-color)' }}>G</span>
                 </div>
 
-                <ul className="nav-list">
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#problem-solving">Problem Solving</a></li>
-                    <li><a href="#resume">Education</a></li>
-                    <li><a href="#resume">Resume</a></li>
+                <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
+                    <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
+                    <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
+                    <li><a href="#problem-solving" onClick={closeMenu}>Problem Solving</a></li>
+                    <li><a href="#resume" onClick={closeMenu}>Education</a></li>
+                    <li><a href="#resume" onClick={closeMenu}>Resume</a></li>
                 </ul>
 
-                <a href="#contact" className="btn-discuss">Contact</a>
+                <a href="#contact" className="btn-discuss" onClick={closeMenu}>Contact</a>
+
+                <div className="mobile-menu-icon" onClick={toggleMenu}>
+                    {isMenuOpen ? <FaTimes /> : <FaBars />}
+                </div>
             </nav>
         </header>
     );

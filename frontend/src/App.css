@@ -207,7 +207,31 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 3rem;
-  margin-bottom: 4rem;
+  margin-bottom: 2rem;
+}
+
+/* Global Mobile Responsiveness */
+@media (max-width: 900px) {
+  .section-container {
+    padding: 4rem 5%;
+    padding-bottom: 2rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  br {
+    display: none;
+    /* remove artificial newlines on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1.8rem;
+  }
 }
 
 .resume-column h3 {

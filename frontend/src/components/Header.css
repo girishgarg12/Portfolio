@@ -117,3 +117,63 @@
   opacity: 0.9;
   transform: translateY(-2px);
 }
+
+.mobile-menu-icon {
+  display: none;
+  font-size: 1.8rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  z-index: 2000;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+  .top-bar {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .main-nav {
+    padding: 1rem 1.5rem;
+  }
+
+  .mobile-menu-icon {
+    display: flex;
+  }
+
+  .btn-discuss {
+    display: none;
+  }
+
+  .nav-list {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #0a0a0a;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2.5rem;
+    transition: right 0.4s ease;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+    z-index: 1005;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-list.active {
+    right: 0;
+  }
+
+  .nav-list a {
+    font-size: 1.2rem;
+  }
+}
