@@ -44,7 +44,7 @@ const ProblemSolving = () => {
             <div className="section-header">
                 <h4 className="section-subtitle">LOGIC & ALGORITHMS</h4>
                 <h2 className="section-title">
-                    Problem <span className="highlight-blue highlight-gradient">Solving</span>
+                    Problem <span className="highlight-blue">Solving</span>
                 </h2>
                 <p className="section-desc">
                     Passionate about competitive programming and algorithmic optimization.
@@ -98,7 +98,7 @@ const ProblemSolving = () => {
                                     <div className="ps-stat-row"><span>Top Percentile</span> <span>37.28%</span></div>
                                 </div>
 
-                                <a href="https://leetcode.com/u/Girish_Garg/" target="_blank" rel="noopener noreferrer" className="ps-btn">
+                                <a href="https://leetcode.com/u/GirishGarg/" target="_blank" rel="noopener noreferrer" className="ps-btn">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
                                     View LeetCode Profile
                                 </a>
@@ -119,7 +119,7 @@ const ProblemSolving = () => {
                                 </div>
 
                                 <div className="ps-main-metric">
-                                    <div className="ps-number"><CountUp end={1441} /></div>
+                                    <div className="ps-number"><CountUp end={1442} /></div>
                                     <div className="ps-metric-label">CodeChef Rating</div>
                                 </div>
 
@@ -208,7 +208,7 @@ const ProblemSolving = () => {
 
                                 <a href="https://github.com/girishgarg12" target="_blank" rel="noopener noreferrer" className="ps-btn">
                                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
-                                    Explore Projects Profile
+                                    Explore Projects
                                 </a>
                             </div>
                         </div>

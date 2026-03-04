@@ -66,7 +66,7 @@ const Skills = () => {
                 </svg>
             ),
             proofs: [
-                "Achieved 3★ in Java on HackerRank",
+                <>Achieved 3★ in Java on <a href="https://www.hackerrank.com/profile/girishgarg52612" target="_blank" rel="noopener noreferrer" className="proof-inline-link">HackerRank</a></>,
                 "Solved 500+ DSA problems using Java and C++",
                 "Implemented JavaScript across multiple full-stack projects"
             ]
@@ -81,7 +81,7 @@ const Skills = () => {
                 </svg>
             ),
             proofs: [
-                "Completed 2-month Spring Boot backend training from Programming Pathshala (certificate link)",
+                <>Completed 2-month Spring Boot backend training from Programming Pathshala <a href="https://drive.google.com/file/d/1mMwAR0XyEfhTDzhPDHs11AyP2yUmWqnY/view" target="_blank" rel="noopener noreferrer" className="proof-inline-link">(Certificate)</a></>,
                 "Built full-stack applications using React, Node.js, Express, MongoDB, and Spring Boot",
                 "Implemented these technologies in projects such as SkillCerts Learning Platform and Config Scanner DevSecOps Tool",
                 "Used Git, Docker, and Postman for version control, containerization, and API testing"

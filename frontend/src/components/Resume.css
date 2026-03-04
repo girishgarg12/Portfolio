@@ -1,12 +1,22 @@
 /* Adjustments for Resume module over App.css */
 .resume-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 3rem;
-    margin-bottom: 4rem;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 8rem;
+    max-width: 1250px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
 }
 
-.resume-column h3 {
+@media (max-width: 900px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+.timeline-heading {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     color: var(--text-primary);
@@ -16,7 +26,7 @@
 .resume-item {
     position: relative;
     padding-left: 2rem;
-    padding-bottom: 3rem;
+    padding-bottom: 2.5rem;
     border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -30,11 +40,7 @@
     border-radius: 50%;
     background: var(--bg-color);
     border: 2px solid var(--primary-color);
-}
-
-.resume-item:last-child {
-    border-left-color: transparent;
-    padding-bottom: 0;
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
 }
 
 .resume-date {
@@ -62,4 +68,160 @@
     color: var(--text-secondary);
     font-size: 0.95rem;
     line-height: 1.6;
+}
+
+/* PREVIEW AND DOWNLOAD COLUMN STYLES */
+.resume-preview-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.resume-card-container {
+    background: var(--card-bg, #111);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+/* Document Preview Wireframe */
+.resume-doc-preview {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: #e2e8f0;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4) inset;
+    transition: transform 0.3s ease;
+}
+
+.resume-doc-preview:hover {
+    transform: translateY(-4px);
+}
+
+.doc-image-bg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    filter: blur(1px) brightness(0.85);
+    opacity: 0.9;
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+.resume-doc-preview:hover .doc-image-bg {
+    filter: blur(3px) brightness(0.5);
+}
+
+/* Overlay and View Button */
+.preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.resume-doc-preview:hover .preview-overlay {
+    opacity: 1;
+}
+
+.preview-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    color: #000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background 0.2s;
+}
+
+.preview-btn:hover {
+    transform: scale(1.05);
+    background: #fff;
+}
+
+.preview-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Download Module */
+.resume-download-actions h5 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.download-hint {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 1.2rem;
+}
+
+.download-btn-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.dl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.dl-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+.dl-pdf {
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.dl-pdf:hover {
+    background: rgba(239, 68, 68, 0.2);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.2);
+    transform: translateY(-2px);
+}
+
+.dl-docx {
+    background: rgba(59, 130, 246, 0.1);
+    color: #3b82f6;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.dl-docx:hover {
+    background: rgba(59, 130, 246, 0.2);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
 }

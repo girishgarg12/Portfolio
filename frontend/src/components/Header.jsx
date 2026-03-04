@@ -1,9 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
 import { SiLeetcode } from 'react-icons/si';
 import './Header.css';
 
 const Header = () => {
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 45) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <header className="header-container">
             {/* Top bar with contact & social info */}
@@ -21,8 +36,8 @@ const Header = () => {
             </div>
 
             {/* Main navigation */}
-            <nav className="main-nav">
-                <div className="logo">
+            <nav className={`main-nav ${isScrolled ? 'sticky-nav' : ''}`}>
+                <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} style={{ cursor: 'pointer' }}>
                     <span>G</span><span style={{ color: 'var(--primary-color)' }}>G</span>
                 </div>
 
@@ -30,6 +45,7 @@ const Header = () => {
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#problem-solving">Problem Solving</a></li>
+                    <li><a href="#resume">Education</a></li>
                     <li><a href="#resume">Resume</a></li>
                 </ul>
 

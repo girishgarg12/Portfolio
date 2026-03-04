@@ -38,8 +38,8 @@ const Projects = () => {
                             <span className="tech-pill">MongoDB</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
-                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
+                            <a href="https://skillcerts.vercel.app/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
+                            <a href="https://github.com/girishgarg12/SkillCerts" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>
@@ -65,8 +65,7 @@ const Projects = () => {
                             <span className="tech-pill">Docker</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
-                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
+                            <a href="https://github.com/girishgarg12/Config-and-Secret-Scanner" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>
@@ -93,8 +92,8 @@ const Projects = () => {
                             <span className="tech-pill">Tailwind</span>
                         </div>
                         <div className="project-links mt-4">
-                            <a href="#" className="btn-primary" style={{ padding: '0.7rem 1.8rem', borderRadius: '30px', textDecoration: 'none', fontWeight: '500', fontSize: '0.9rem', background: 'var(--button-color)', color: '#fff' }}>Live Demo</a>
-                            <a href="#" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
+                            <a href="https://nexamartstore.wuaze.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>
+                            <a href="https://github.com/girishgarg12/NexaMart" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
                         </div>
                     </div>
                 </div>

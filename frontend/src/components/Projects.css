@@ -2,10 +2,10 @@
 .projects-container {
     display: flex;
     flex-direction: column;
-    gap: 6rem;
+    gap: 5rem;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 2rem 0;
+    padding: 0;
 }
 
 .project-row {
@@ -158,15 +158,15 @@
 
 .btn-secondary {
     padding: 0.7rem 1.8rem;
-    border-radius: 30px;
+    border-radius: 8px;
     text-decoration: none;
     font-weight: 500;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--text-primary);
     background: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
     transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
 }
