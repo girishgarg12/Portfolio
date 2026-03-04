@@ -38,7 +38,6 @@ const Header = () => {
                     <a href="https://leetcode.com/u/GirishGarg/" target="_blank" rel="noopener noreferrer" aria-label="LeetCode"><SiLeetcode /></a>
                 </div>
                 <div className="contact-info">
-                    <span>📞 +91-9466854145</span>
                     <span>✉ girishgarg52612@gmail.com</span>
                     <span>📍 Karnal, Haryana</span>
                 </div>
@@ -56,6 +55,7 @@ const Header = () => {
                     <li><a href="#problem-solving" onClick={closeMenu}>Problem Solving</a></li>
                     <li><a href="#resume" onClick={closeMenu}>Education</a></li>
                     <li><a href="#resume" onClick={closeMenu}>Resume</a></li>
+                    <li className="mobile-only-link"><a href="#contact" onClick={closeMenu}>Contact</a></li>
                 </ul>
 
                 <a href="#contact" className="btn-discuss" onClick={closeMenu}>Contact</a>

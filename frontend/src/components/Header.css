@@ -101,6 +101,15 @@
   color: var(--text-primary);
 }
 
+.nav-list a:active {
+  transform: scale(0.95);
+  color: var(--primary-color);
+}
+
+.mobile-only-link {
+  display: none;
+}
+
 .btn-discuss {
   background: var(--button-color);
   /* Vibrant purple/blue */
@@ -167,5 +176,9 @@
 
   .nav-list a {
     font-size: 1.2rem;
+  }
+
+  .mobile-only-link {
+    display: block;
   }
 }

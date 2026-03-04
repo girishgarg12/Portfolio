@@ -407,6 +407,11 @@
     width: 100%;
 }
 
+.ps-btn:active {
+    transform: scale(0.96);
+    filter: brightness(0.9);
+}
+
 .ps-btn svg {
     width: 18px;
     height: 18px;
@@ -426,6 +431,6 @@
     }
 
     .ps-flip-card {
-        height: 380px;
+        height: 480px;
     }
 }
