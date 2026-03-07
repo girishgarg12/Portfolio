@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import profileImg from '../assets/images/Photo gg1.jpeg';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
     const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -12,14 +13,29 @@ const Contact = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Clear the form
-        setFormData({ name: '', email: '', message: '' });
 
-        // Show success popup
-        setShowSuccess(true);
-        setTimeout(() => {
-            setShowSuccess(false);
-        }, 3500); // Popup disappears after 3.5 seconds
+        const serviceID = "service_y269pex";
+        const templateID = "template_eleu70r";
+        const publicKey = "BqM40blJ_2BIB8MYo";
+
+        const templateParams = {
+            user_name: formData.name,
+            user_email: formData.email,
+            message: formData.message
+        };
+
+        emailjs.send(serviceID, templateID, templateParams, publicKey)
+            .then(() => {
+                setFormData({ name: '', email: '', message: '' });
+
+                setShowSuccess(true);
+                setTimeout(() => {
+                    setShowSuccess(false);
+                }, 3500);
+            })
+            .catch((error) => {
+                console.log("Email error:", error);
+            });
     };
 
     return (
