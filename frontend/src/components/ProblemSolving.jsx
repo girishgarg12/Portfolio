@@ -177,7 +177,7 @@ const ProblemSolving = () => {
 
                                 <ul className="ps-stats-list">
                                     <li><span className="ps-stat-icon">📦</span> Repositories — <CountUp end={10} suffix="+" /></li>
-                                    <li><span className="ps-stat-icon">⚡</span> Contributions — <CountUp end={60} suffix="+" /></li>
+                                    <li><span className="ps-stat-icon">⚡</span> Contributions — <CountUp end={70} suffix="+" /></li>
                                     <li><span className="ps-stat-icon">💻</span> DSA Solutions — <CountUp end={50} suffix="+" /></li>
                                 </ul>
 
