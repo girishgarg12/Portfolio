@@ -14,24 +14,32 @@ const Contact = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // 1. Show the success popup immediately so there is no delay
+        setShowSuccess(true);
+
+        // 2. Hide success popup after 3.5 seconds
+        setTimeout(() => {
+            setShowSuccess(false);
+        }, 3500);
+
+        // 3. Store data to send, then clear form immediately
+        const currentData = { ...formData };
+        setFormData({ name: '', email: '', message: '' });
+
         const serviceID = "service_y269pex";
         const templateID = "template_eleu70r";
         const publicKey = "BqM40blJ_2BIB8MYo";
 
         const templateParams = {
-            user_name: formData.name,
-            user_email: formData.email,
-            message: formData.message
+            user_name: currentData.name,
+            user_email: currentData.email,
+            message: currentData.message
         };
 
+        // 4. Send email in the background without making the user wait
         emailjs.send(serviceID, templateID, templateParams, publicKey)
             .then(() => {
-                setFormData({ name: '', email: '', message: '' });
-
-                setShowSuccess(true);
-                setTimeout(() => {
-                    setShowSuccess(false);
-                }, 3500);
+                console.log("Email successfully sent!");
             })
             .catch((error) => {
                 console.log("Email error:", error);
