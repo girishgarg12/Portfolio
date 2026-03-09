@@ -69,7 +69,7 @@ const ProblemSolving = () => {
                                 </div>
 
                                 <div className="ps-main-metric">
-                                    <div className="ps-number"><CountUp end={435} /></div>
+                                    <div className="ps-number"><CountUp end={438} /></div>
                                     <div className="ps-metric-label">Problems Solved</div>
                                 </div>
 
@@ -90,8 +90,8 @@ const ProblemSolving = () => {
                                 <h4 className="ps-back-title">Detailed Stats</h4>
 
                                 <div className="ps-detailed-stats">
-                                    <div className="ps-stat-row"><span>Easy</span> <span className="text-easy">149</span></div>
-                                    <div className="ps-stat-row"><span>Medium</span> <span className="text-medium">252</span></div>
+                                    <div className="ps-stat-row"><span>Easy</span> <span className="text-easy">150</span></div>
+                                    <div className="ps-stat-row"><span>Medium</span> <span className="text-medium">255</span></div>
                                     <div className="ps-stat-row"><span>Hard</span> <span className="text-hard">34</span></div>
                                     <div className="ps-divider"></div>
                                     <div className="ps-stat-row"><span>Contests Attended</span> <span>6</span></div>
