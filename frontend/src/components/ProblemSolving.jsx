@@ -167,7 +167,7 @@ const ProblemSolving = () => {
                                 </div>
 
                                 <div className="ps-main-metric">
-                                    <div className="ps-number"><CountUp end={1442} /></div>
+                                    <div className="ps-number"><CountUp end={1464} /></div>
                                     <div className="ps-metric-label">CodeChef Rating</div>
                                 </div>
 
