@@ -35,10 +35,58 @@ const CountUp = ({ end, duration = 2000, suffix = "" }) => {
         return () => observer.disconnect();
     }, [end, duration, hasAnimated]);
 
+    useEffect(() => {
+        if (hasAnimated) {
+            setCount(end);
+        }
+    }, [end, hasAnimated]);
+
     return <span ref={countRef}>{count}{suffix}</span>;
 };
 
 const ProblemSolving = () => {
+    const [leetcodeData, setLeetcodeData] = useState({
+        solvedProblem: 438,
+        easySolved: 150,
+        mediumSolved: 255,
+        hardSolved: 34,
+        contestRating: 1525,
+        contestAttend: 6,
+        contestTopPercentage: 37.28,
+        maxStreak: 221
+    });
+
+    useEffect(() => {
+        const fetchLeetcodeData = async () => {
+            try {
+                const [solvedRes, contestRes] = await Promise.all([
+                    fetch("https://alfa-leetcode-api.onrender.com/GirishGarg/solved"),
+                    fetch("https://alfa-leetcode-api.onrender.com/GirishGarg/contest")
+                ]);
+
+                if (solvedRes.ok && contestRes.ok) {
+                    const solvedData = await solvedRes.json();
+                    const contestData = await contestRes.json();
+
+                    setLeetcodeData(prev => ({
+                        ...prev,
+                        solvedProblem: solvedData.solvedProblem || prev.solvedProblem,
+                        easySolved: solvedData.easySolved || prev.easySolved,
+                        mediumSolved: solvedData.mediumSolved || prev.mediumSolved,
+                        hardSolved: solvedData.hardSolved || prev.hardSolved,
+                        contestRating: contestData.contestRating ? Math.round(contestData.contestRating) : prev.contestRating,
+                        contestAttend: contestData.contestAttend || prev.contestAttend,
+                        contestTopPercentage: contestData.contestTopPercentage || prev.contestTopPercentage
+                    }));
+                }
+            } catch (error) {
+                console.error("Error fetching LeetCode data:", error);
+            }
+        };
+
+        fetchLeetcodeData();
+    }, []);
+
     return (
         <section id="problem-solving" className="section-container" style={{ backgroundColor: "#0a0a0a" }}>
             <div className="section-header">
@@ -69,14 +117,14 @@ const ProblemSolving = () => {
                                 </div>
 
                                 <div className="ps-main-metric">
-                                    <div className="ps-number"><CountUp end={438} /></div>
+                                    <div className="ps-number"><CountUp end={leetcodeData.solvedProblem} /></div>
                                     <div className="ps-metric-label">Problems Solved</div>
                                 </div>
 
                                 <ul className="ps-stats-list">
-                                    <li><span className="ps-stat-icon">⚡</span> Contest Rating — 1525</li>
-                                    <li><span className="ps-stat-icon">🔥</span> Max Streak — 221 days</li>
-                                    <li><span className="ps-stat-icon">📊</span> Medium / Hard — 286</li>
+                                    <li><span className="ps-stat-icon">⚡</span> Contest Rating — {leetcodeData.contestRating}</li>
+                                    <li><span className="ps-stat-icon">🔥</span> Max Streak — {leetcodeData.maxStreak} days</li>
+                                    <li><span className="ps-stat-icon">📊</span> Medium / Hard — {leetcodeData.mediumSolved + leetcodeData.hardSolved}</li>
                                 </ul>
 
                                 <div className="ps-bottom-label">Competitive Programming</div>
@@ -90,12 +138,12 @@ const ProblemSolving = () => {
                                 <h4 className="ps-back-title">Detailed Stats</h4>
 
                                 <div className="ps-detailed-stats">
-                                    <div className="ps-stat-row"><span>Easy</span> <span className="text-easy">150</span></div>
-                                    <div className="ps-stat-row"><span>Medium</span> <span className="text-medium">255</span></div>
-                                    <div className="ps-stat-row"><span>Hard</span> <span className="text-hard">34</span></div>
+                                    <div className="ps-stat-row"><span>Easy</span> <span className="text-easy">{leetcodeData.easySolved}</span></div>
+                                    <div className="ps-stat-row"><span>Medium</span> <span className="text-medium">{leetcodeData.mediumSolved}</span></div>
+                                    <div className="ps-stat-row"><span>Hard</span> <span className="text-hard">{leetcodeData.hardSolved}</span></div>
                                     <div className="ps-divider"></div>
-                                    <div className="ps-stat-row"><span>Contests Attended</span> <span>6</span></div>
-                                    <div className="ps-stat-row"><span>Top Percentile</span> <span>37.28%</span></div>
+                                    <div className="ps-stat-row"><span>Contests Attended</span> <span>{leetcodeData.contestAttend}</span></div>
+                                    <div className="ps-stat-row"><span>Top Percentile</span> <span>{leetcodeData.contestTopPercentage}%</span></div>
                                 </div>
 
                                 <a href="https://leetcode.com/u/GirishGarg/" target="_blank" rel="noopener noreferrer" className="ps-btn">
