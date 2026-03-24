@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
 import "./ProblemSolving.css";
 
 const CountUp = ({ end, duration = 2000, suffix = "" }) => {
@@ -53,11 +54,37 @@ const ProblemSolving = () => {
         contestRating: 1525,
         contestAttend: 6,
         contestTopPercentage: 37.28,
-        maxStreak: 221
+        maxStreak: 221,
+        peakRating: 1500,
+        globalRank: 187668,
+        graphData: [
+            { name: "Biweekly Contest 133", index: 1, dateLabel: "Jul 6", rating: 1488 },
+            { name: "Weekly Contest 405", index: 2, dateLabel: "Jul 14", rating: 1469 },
+            { name: "Weekly Contest 406", index: 3, dateLabel: "Aug 18", rating: 1474 },
+            { name: "Biweekly Contest 137", index: 4, dateLabel: "Feb 15", rating: 1501 },
+            { name: "Weekly Contest 431", index: 5, dateLabel: "Mar 2", rating: 1524 }
+        ]
     });
+
+    const [githubStats, setGithubStats] = useState({
+        commits: 210,
+        projects: 21,
+        stars: 0,
+        followers: 1
+    });
+
+    const heatmapScrollRef = useRef(null);
+
+    // Auto-scroll the github heatmap to the far right on load
+    useEffect(() => {
+        if (heatmapScrollRef.current) {
+            heatmapScrollRef.current.scrollLeft = heatmapScrollRef.current.scrollWidth;
+        }
+    }, [githubStats]);
 
     useEffect(() => {
         const fetchLeetcodeData = async () => {
+            // 1. Fetch LeetCode Data
             try {
                 const [solvedRes, contestRes] = await Promise.all([
                     fetch("https://alfa-leetcode-api.onrender.com/GirishGarg/solved"),
@@ -68,23 +95,95 @@ const ProblemSolving = () => {
                     const solvedData = await solvedRes.json();
                     const contestData = await contestRes.json();
 
+                    let history = contestData.contestParticipation || [];
+                    let gData = history.map((c, i) => {
+                        let tzLabel = "";
+                        if (c.contest && c.contest.startTime) {
+                            const date = new Date(c.contest.startTime * 1000);
+                            tzLabel = date.toLocaleString('default', { month: 'short', day: 'numeric' });
+                        }
+
+                        return {
+                            name: c.contest?.title || `Contest ${i + 1}`,
+                            index: i + 1,
+                            dateLabel: tzLabel,
+                            rating: Math.round(Number(c.rating)),
+                        };
+                    });
+
+                    let validRatings = history.map(c => Math.round(Number(c.rating))).filter(r => !isNaN(r));
+                    let peakRs = validRatings.length > 0 ? Math.max(...validRatings) : 0;
+                    let cRating = contestData.contestRating ? Math.round(Number(contestData.contestRating)) : 0;
+                    let guaranteedPeak = Math.max(peakRs, cRating);
+
                     setLeetcodeData(prev => ({
                         ...prev,
                         solvedProblem: solvedData.solvedProblem || prev.solvedProblem,
                         easySolved: solvedData.easySolved || prev.easySolved,
                         mediumSolved: solvedData.mediumSolved || prev.mediumSolved,
                         hardSolved: solvedData.hardSolved || prev.hardSolved,
-                        contestRating: contestData.contestRating ? Math.round(contestData.contestRating) : prev.contestRating,
+                        contestRating: cRating || prev.contestRating,
                         contestAttend: contestData.contestAttend || prev.contestAttend,
-                        contestTopPercentage: contestData.contestTopPercentage || prev.contestTopPercentage
+                        contestTopPercentage: contestData.contestTopPercentage || prev.contestTopPercentage,
+                        peakRating: guaranteedPeak || prev.peakRating,
+                        globalRank: contestData.contestGlobalRanking || prev.globalRank,
+                        graphData: gData
                     }));
+                } else {
+                    console.warn(`LeetCode API failed. Solved status: ${solvedRes.status}, Contest status: ${contestRes.status}`);
                 }
             } catch (error) {
                 console.error("Error fetching LeetCode data:", error);
             }
         };
-
         fetchLeetcodeData();
+    }, []);
+
+    // 2. Fetch GitHub Profile
+    useEffect(() => {
+        const fetchGithubProfile = async () => {
+            try {
+                const githubRes = await fetch("https://api.github.com/users/girishgarg12");
+                if (githubRes.ok) {
+                    const gitData = await githubRes.json();
+                    setGithubStats(prev => ({
+                        ...prev,
+                        projects: gitData.public_repos !== undefined ? gitData.public_repos : prev.projects,
+                        followers: gitData.followers !== undefined ? gitData.followers : prev.followers
+                    }));
+                } else {
+                    console.warn(`GitHub API failed. Status: ${githubRes.status}`);
+                }
+            } catch (error) {
+                console.error("Error fetching GitHub Profile:", error);
+            }
+        };
+        fetchGithubProfile();
+    }, []);
+
+    // 3. Fetch GitHub Contributions
+    useEffect(() => {
+        const fetchGithubContributions = async () => {
+            try {
+                const gitContribRes = await fetch("https://github-contributions.vercel.app/api/v1/girishgarg12");
+                if (gitContribRes.ok) {
+                    const gitContribData = await gitContribRes.json();
+                    if (gitContribData.years) {
+                        const totalCommits = gitContribData.years.reduce((acc, year) => acc + year.total, 0);
+                        setGithubStats(prev => ({
+                            ...prev,
+                            commits: totalCommits
+                        }));
+                    }
+                } else {
+                    console.warn(`GitHub Contributions API failed. Status: ${gitContribRes.status}`);
+                }
+            } catch (error) {
+                console.error("Error fetching GitHub Contributions:", error);
+            }
+        };
+
+        fetchGithubContributions();
     }, []);
 
     return (
@@ -264,6 +363,95 @@ const ProblemSolving = () => {
                 </div>
 
             </div>
+
+            {/* ====== EXTRAS (Heatmap & Contest Graph) ====== */}
+            <div className="ps-extras-grid">
+                {/* Left: GitHub Contribs & Stats */}
+                <div className="ps-extras-column">
+                    <div className="ps-extra-card">
+                        <h3 className="ps-extra-title" style={{ marginBottom: '1.5rem' }}>CONTRIBUTION HEATMAP</h3>
+                        <div className="ps-heatmap-container" ref={heatmapScrollRef}>
+                            <img src="https://ghchart.rshah.org/3b82f6/girishgarg12" alt="GitHub Contributions Chart" />
+                        </div>
+                    </div>
+
+                    <div className="ps-stats-grid-4">
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">COMMITS</span>
+                            <span className="ps-stat-value"><CountUp end={githubStats.commits} /></span>
+                        </div>
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">PROJECTS</span>
+                            <span className="ps-stat-value"><CountUp end={githubStats.projects} /></span>
+                        </div>
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">STARS</span>
+                            <span className="ps-stat-value"><CountUp end={githubStats.stars} /></span>
+                        </div>
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">FOLLOWERS</span>
+                            <span className="ps-stat-value"><CountUp end={githubStats.followers} /></span>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Right: LeetCode Graph & Stats */}
+                <div className="ps-extras-column">
+                    <div className="ps-extra-card">
+                        <div className="ps-extra-header">
+                            <h3 className="ps-extra-title">CONTEST PERFORMANCE</h3>
+                            <div className="ps-current-rating">Current Rating <span>{leetcodeData.contestRating}</span></div>
+                        </div>
+                        <div className="ps-chart-container">
+                            {leetcodeData.graphData.length > 0 ? (
+                                <ResponsiveContainer width="99%" height={200}>
+                                    <LineChart data={leetcodeData.graphData} margin={{ top: 5, right: 30, left: -20, bottom: 5 }}>
+                                        <XAxis 
+                                            dataKey="index" 
+                                            type="number"
+                                            domain={['dataMin', 'dataMax']}
+                                            padding={{ left: 25, right: 25 }}
+                                            tickCount={5}
+                                            tickFormatter={(val) => {
+                                                const idx = Math.round(val) - 1;
+                                                if (idx >= leetcodeData.graphData.length - 1) return "";
+                                                return leetcodeData.graphData[idx]?.dateLabel || "";
+                                            }}
+                                            tick={{ fill: '#6b7280', fontSize: 11 }} 
+                                            tickLine={false} 
+                                            axisLine={false} 
+                                            dy={10} 
+                                        />
+                                        <YAxis domain={['auto', 'auto']} tick={{ fill: '#6b7280', fontSize: 12 }} tickLine={false} axisLine={false} />
+                                        <Tooltip
+                                            labelFormatter={(value, payload) => payload && payload.length ? payload[0].payload.name : ""}
+                                            contentStyle={{ backgroundColor: '#111', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '8px', color: '#fff' }}
+                                            itemStyle={{ color: '#3b82f6' }}
+                                        />
+                                        <Line type="monotone" dataKey="rating" stroke="#3b82f6" strokeWidth={3} dot={{ r: 4, fill: '#3b82f6', strokeWidth: 2 }} activeDot={{ r: 6 }} />
+                                    </LineChart>
+                                </ResponsiveContainer>
+                            ) : (
+                                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100%', color: '#6b7280', fontSize: '0.9rem' }}>
+                                    Fetching live data or API limit reached...
+                                </div>
+                            )}
+                        </div>
+                    </div>
+
+                    <div className="ps-stats-grid-2">
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">PEAK RATING</span>
+                            <span className="ps-stat-value text-yellow-styled"><CountUp end={leetcodeData.peakRating} /></span>
+                        </div>
+                        <div className="ps-stat-box">
+                            <span className="ps-stat-label">GLOBAL RANK</span>
+                            <span className="ps-stat-value text-yellow-styled"><CountUp end={leetcodeData.globalRank} /></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
     );
 };

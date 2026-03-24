@@ -23,6 +23,24 @@
     font-weight: 600;
 }
 
+.resume-items-wrapper {
+    position: relative;
+    padding: 0;
+}
+
+.animated-timeline-line {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 3px;
+    max-height: calc(100% - 100px); /* stop exactly above last dot text content */
+    background: linear-gradient(180deg, #3b82f6, #1e3a8a);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.8), 0 0 5px rgba(59, 130, 246, 0.5);
+    z-index: 10;
+    transition: height 0.15s ease-out; /* Smooth follow effect on scroll */
+    border-radius: 4px;
+}
+
 .resume-item {
     position: relative;
     padding-left: 2rem;
@@ -38,9 +56,10 @@
     width: 9px;
     height: 9px;
     border-radius: 50%;
-    background: var(--bg-color);
-    border: 2px solid var(--primary-color);
+    background: var(--bg-color, #111);
+    border: 2px solid var(--primary-color, #3b82f6);
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.5);
+    z-index: 20; /* Critical so neon line passes UNDER the dot cleanly */
 }
 
 .resume-date {

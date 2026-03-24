@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import './Resume.css';
 import resumePdf from '../assets/documents/Girish_Garg_Resume.pdf';
 import resumeDocx from '../assets/documents/Girish_Garg_Resume.docx';
 import resumePreviewImg from '../assets/images/preview_image_resume.png';
 
 const Resume = () => {
+    const [scrollProgress, setScrollProgress] = useState(0);
+    const timelineRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (!timelineRef.current) return;
+            const rect = timelineRef.current.getBoundingClientRect();
+            const winHeight = window.innerHeight;
+            
+            // Trigger animation heavily when component crosses lower-mid screen
+            const triggerPoint = winHeight * 0.65;
+            const scrolled = triggerPoint - rect.top;
+            
+            let progress = (scrolled / rect.height) * 100;
+            progress = Math.max(0, Math.min(100, progress));
+            
+            setScrollProgress(progress);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll(); // initialize on load
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
     return (
         <section id="resume" className="section-container">
             <div className="section-header">
@@ -15,9 +39,14 @@ const Resume = () => {
             <div className="resume-grid">
                 {/* TIMELINE COLUMN */}
                 <div className="resume-timeline-col">
-                    {/* Education */}
                     <h3 className="timeline-heading">Education</h3>
-                    <div className="resume-item">
+                    <div className="resume-items-wrapper" ref={timelineRef}>
+                        <div 
+                            className="animated-timeline-line" 
+                            style={{ height: `${scrollProgress}%` }}
+                        />
+                        
+                        <div className="resume-item">
                         <div className="resume-date">Aug 2023 – Present</div>
                         <h4>B.Tech – Computer Science</h4>
                         <p>Lovely Professional University</p>
@@ -37,6 +66,7 @@ const Resume = () => {
                         <p>Indus Public School, Haryana</p>
                         <p className="resume-desc">Percentage: 84.4%</p>
                     </div>
+                  </div>
                 </div>
 
                 {/* PREVIEW & DOWNLOAD COLUMN */}
