@@ -94,11 +94,38 @@
   text-decoration: none;
   font-weight: 500;
   font-size: 0.9rem;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+  transition: width 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 2px;
 }
 
 .nav-list a:hover {
   color: var(--text-primary);
+}
+
+.nav-list a.active-link {
+  color: var(--text-primary);
+}
+
+.nav-list a.active-link::after {
+  width: 100%;
+}
+
+/* Specific Section Themes in Navbar */
+.nav-list a[href="#problem-solving"].active-link::after {
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
 }
 
 .nav-list a:active {

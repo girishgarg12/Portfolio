@@ -6,6 +6,7 @@ import './Header.css';
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [activeSection, setActiveSection] = useState("");
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -16,6 +17,7 @@ const Header = () => {
     };
 
     useEffect(() => {
+        // Handle Scroll Depth for Sticky Header
         const handleScroll = () => {
             if (window.scrollY > 45) {
                 setIsScrolled(true);
@@ -24,9 +26,38 @@ const Header = () => {
             }
         };
 
+        // Scrollspy Intersection Observer
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -50% 0px',
+            threshold: 0
+        };
+
+        const handleIntersect = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setActiveSection(entry.target.id);
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(handleIntersect, observerOptions);
+        const sectionIds = ['home', 'projects', 'skills', 'problem-solving', 'certificates', 'resume', 'contact'];
+        
+        sectionIds.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) observer.observe(el);
+        });
+
         window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+            observer.disconnect();
+        };
     }, []);
+
+    // Helper for active link class
+    const getActiveLinkClass = (id) => (activeSection === id ? 'active-link' : '');
 
     return (
         <header className="header-container">
@@ -50,11 +81,12 @@ const Header = () => {
                 </div>
 
                 <ul className={`nav-list ${isMenuOpen ? 'active' : ''}`}>
-                    <li><a href="#projects" onClick={closeMenu}>Projects</a></li>
-                    <li><a href="#skills" onClick={closeMenu}>Skills</a></li>
-                    <li><a href="#problem-solving" onClick={closeMenu}>Problem Solving</a></li>
-                    <li><a href="#resume" onClick={closeMenu}>Education</a></li>
-                    <li><a href="#resume" onClick={closeMenu}>Resume</a></li>
+                    <li><a href="#projects" className={getActiveLinkClass('projects')} onClick={closeMenu}>Projects</a></li>
+                    <li><a href="#skills" className={getActiveLinkClass('skills')} onClick={closeMenu}>Skills</a></li>
+                    <li><a href="#problem-solving" className={getActiveLinkClass('problem-solving')} onClick={closeMenu}>Problem Solving</a></li>
+                    <li><a href="#certificates" className={getActiveLinkClass('certificates')} onClick={closeMenu}>Achievements</a></li>
+                    <li><a href="#resume" className={getActiveLinkClass('resume')} onClick={closeMenu}>Education</a></li>
+                    <li><a href="#resume" className={getActiveLinkClass('resume')} onClick={closeMenu}>Resume</a></li>
                     <li className="mobile-only-link"><a href="#contact" onClick={closeMenu}>Contact</a></li>
                 </ul>
 

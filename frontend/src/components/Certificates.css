@@ -1,0 +1,171 @@
+.certificates-container {
+    width: 100%;
+    margin-top: 3rem;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.certificates-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 2rem;
+    padding: 1rem 0.5rem 3rem 0.5rem;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(59, 130, 246, 0.5) transparent;
+}
+
+/* Custom Scrollbar for Webkit */
+.certificates-scroll::-webkit-scrollbar {
+    height: 6px;
+}
+
+.certificates-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.certificates-scroll::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+    border-radius: 10px;
+}
+
+.certificate-card {
+    min-width: 320px;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    border-color: rgba(59, 130, 246, 0.3);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 20px rgba(59, 130, 246, 0.1);
+}
+
+.certificate-image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.certificate-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(1px);
+    transition: transform 0.6s ease, filter 0.4s ease;
+}
+
+.certificate-card:hover .certificate-image {
+    transform: scale(1.05);
+    filter: blur(0px);
+}
+
+.certificate-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 10, 30, 0.7);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.certificate-card:hover .certificate-overlay {
+    opacity: 1;
+}
+
+.view-cert-btn {
+    padding: 0.8rem 1.5rem;
+    background: #fff;
+    color: #000;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.view-cert-btn:hover {
+    transform: scale(1.1);
+    background: #3b82f6;
+    color: #fff;
+}
+
+.certificate-info {
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.cert-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.cert-company {
+    font-size: 0.85rem;
+    color: #3b82f6;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.scroll-hint {
+    text-align: right;
+    margin-top: 1rem;
+    color: #6b7280;
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.8;
+}
+
+/* Fade effects on edges */
+.certificates-container::before,
+.certificates-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 40px;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.certificates-container::before {
+    left: -1px;
+    background: linear-gradient(to right, #050505 0%, transparent 100%);
+}
+
+.certificates-container::after {
+    right: -1px;
+    background: linear-gradient(to left, #050505 0%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+    .certificate-card {
+        min-width: 280px;
+    }
+
+    .certificates-container::before,
+    .certificates-container::after {
+        width: 30px;
+    }
+}

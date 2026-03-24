@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import ProblemSolving from './components/ProblemSolving';
+import Certificates from './components/Certificates';
 import Resume from './components/Resume';
 import Contact from './components/Contact';
 import LoadingScreen from './components/LoadingScreen';
@@ -32,6 +33,7 @@ function App() {
           <Projects />
           <Skills />
           <ProblemSolving />
+          <Certificates />
           <Resume />
           <Contact />
         </main>
