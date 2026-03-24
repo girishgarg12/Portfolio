@@ -47,7 +47,7 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="section-container" style={{ backgroundColor: '#0a0a0a' }}>
+        <section id="contact" className="section-container" style={{ backgroundColor: 'var(--bg-color)' }}>
             <div className="section-header">
                 <h4 className="section-subtitle">LET'S CONNECT</h4>
                 <h2 className="section-title">Get In <span className="highlight-blue">Touch</span></h2>

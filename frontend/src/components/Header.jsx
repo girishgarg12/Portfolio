@@ -42,7 +42,7 @@ const Header = () => {
         };
 
         const observer = new IntersectionObserver(handleIntersect, observerOptions);
-        const sectionIds = ['home', 'projects', 'skills', 'problem-solving', 'certificates', 'resume', 'contact'];
+        const sectionIds = ['home', 'about', 'projects', 'skills', 'problem-solving', 'certificates', 'resume', 'contact'];
         
         sectionIds.forEach(id => {
             const el = document.getElementById(id);

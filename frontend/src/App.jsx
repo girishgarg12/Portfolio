@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
+import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import ProblemSolving from './components/ProblemSolving';
@@ -30,6 +31,7 @@ function App() {
         <Header />
         <main>
           <Hero />
+          <About />
           <Projects />
           <Skills />
           <ProblemSolving />
