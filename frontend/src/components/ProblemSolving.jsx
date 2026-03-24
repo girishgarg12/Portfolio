@@ -55,7 +55,7 @@ const ProblemSolving = () => {
         contestAttend: 6,
         contestTopPercentage: 37.28,
         maxStreak: 221,
-        peakRating: 1500,
+        peakRating: 1604,
         globalRank: 187668,
         graphData: [
             { name: "Biweekly Contest 133", index: 1, dateLabel: "Jul 6", rating: 1488 },
@@ -324,7 +324,7 @@ const ProblemSolving = () => {
 
                                 <ul className="ps-stats-list">
                                     <li><span className="ps-stat-icon">📦</span> Repositories — <CountUp end={10} suffix="+" /></li>
-                                    <li><span className="ps-stat-icon">⚡</span> Contributions — <CountUp end={70} suffix="+" /></li>
+                                    <li><span className="ps-stat-icon">⚡</span> Contributions — <CountUp end={120} suffix="+" /></li>
                                     <li><span className="ps-stat-icon">💻</span> DSA Solutions — <CountUp end={50} suffix="+" /></li>
                                 </ul>
 
@@ -341,7 +341,7 @@ const ProblemSolving = () => {
                                 <div className="ps-focus-areas">
                                     <div className="ps-focus-group">
                                         <h5>Primary Languages</h5>
-                                        <p>Java • C++ • JavaScript</p>
+                                        <p>JavaScript • NodeJS • SpringBoot</p>
                                     </div>
                                     <div className="ps-focus-group">
                                         <h5>Focus Areas</h5>
