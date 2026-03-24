@@ -21,6 +21,9 @@ const Projects = () => {
                 <div className="project-row">
                     <div className="project-image-wrapper">
                         <img src={skillCertsImg} alt="SkillCerts Preview" className="project-image-img" />
+                        <div className="project-image-overlay">
+                            <a href="https://skillcerts.vercel.app/" target="_blank" rel="noopener noreferrer" className="view-demo-badge">View Demo</a>
+                        </div>
                     </div>
                     <div className="project-details">
                         <h3 className="project-name">SkillCerts – Role-Based Learning</h3>
@@ -28,9 +31,9 @@ const Projects = () => {
                             MERN-based learning platform with JWT authentication and Role-Based Access Control (RBAC).
                         </p>
                         <ul className="project-features">
-                            <li>Dedicated Learner/Instructor dashboards</li>
-                            <li>Secure two-step Razorpay payment integration</li>
-                            <li>Automated PDF certificate generation</li>
+                            <li>Architected a robust RBAC system for distinct Learner and Instructor dashboards.</li>
+                            <li>Integrated Razorpay API to handle secure, multi-stage financial transactions.</li>
+                            <li>Developed an automated certificate generation engine issuing dynamic PDFs upon completion.</li>
                         </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">Node.js</span>
@@ -48,6 +51,9 @@ const Projects = () => {
                 <div className="project-row reverse-row">
                     <div className="project-image-wrapper">
                         <img src={configScannerImg} alt="Config Scanner Preview" className="project-image-img" />
+                        <div className="project-image-overlay">
+                            <a href="https://github.com/girishgarg12/Config-and-Secret-Scanner" target="_blank" rel="noopener noreferrer" className="view-demo-badge">View Code</a>
+                        </div>
                     </div>
                     <div className="project-details">
                         <h3 className="project-name">Config Scanner & Secrets Detector</h3>
@@ -55,14 +61,15 @@ const Projects = () => {
                             A Spring Boot DevOps security tool to detect exposed secrets and insecure configurations via static analysis.
                         </p>
                         <ul className="project-features">
-                            <li>Supports multiple file types (JSON, YAML, etc.)</li>
-                            <li>Recursive regex-based structure validation</li>
-                            <li>Runs seamlessly via Docker containers</li>
+                            <li>Built a scanning engine in Spring Boot to analyze nested JSON and YAML project structures.</li>
+                            <li>Implemented recursive regex-based detection to flag AWS keys and sensitive file exposures.</li>
+                            <li>Containerized the scanning suite with Docker for consistent, portable execution environments.</li>
                         </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">Java</span>
                             <span className="tech-pill">Spring Boot</span>
                             <span className="tech-pill">Docker</span>
+                            <span className="tech-pill">MongoDB</span>
                         </div>
                         <div className="project-links mt-4">
                             <a href="https://github.com/girishgarg12/Config-and-Secret-Scanner" target="_blank" rel="noopener noreferrer" className="btn-secondary">GitHub <span className="arrow-icon">→</span></a>
@@ -74,6 +81,9 @@ const Projects = () => {
                 <div className="project-row">
                     <div className="project-image-wrapper">
                         <img src={nexaMartImg} alt="NexaMart Preview" className="project-image-img" />
+                        <div className="project-image-overlay">
+                            <a href="https://nexamartstore.wuaze.com/" target="_blank" rel="noopener noreferrer" className="view-demo-badge">View Demo</a>
+                        </div>
                     </div>
                     <div className="project-details">
                         <h3 className="project-name">NexaMart – Marketing Platform</h3>
@@ -82,14 +92,14 @@ const Projects = () => {
                             and bulk CRUD operations.
                         </p>
                         <ul className="project-features">
-                            <li>Strict session-based authentication with inactivity timeouts</li>
-                            <li>Responsive modern UI structured with Tailwind CSS</li>
-                            <li>Dynamic admin dashboards for streamlined control</li>
+                            <li>Designed a secure session-based authentication layer with inactivity-aware timeouts.</li>
+                            <li>Developed a dynamic seller dashboard for full CRUD operations and inventory tracking.</li>
+                            <li>Implemented a responsive marketplace UI optimized for high cross-browser compatibility.</li>
                         </ul>
                         <div className="tech-stack">
                             <span className="tech-pill">PHP</span>
                             <span className="tech-pill">MySQL</span>
-                            <span className="tech-pill">Tailwind</span>
+                            <span className="tech-pill">Tailwind CSS</span>
                         </div>
                         <div className="project-links mt-4">
                             <a href="https://nexamartstore.wuaze.com/" target="_blank" rel="noopener noreferrer" className="btn-primary">Live Demo</a>

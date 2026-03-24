@@ -1,6 +1,6 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter';
-import profilePic from '../assets/images/photogg2.jpeg';
+import profilePic from '../assets/images/gg-image-6.jpeg';
 import './Hero.css';
 
 const Hero = () => {
@@ -12,7 +12,7 @@ const Hero = () => {
 
             <div className="hero-content">
                 <h1 className="hero-title">
-                    <span className="font-light" style={{ fontSize: '2rem' }}>Hi, I’m your Developer.</span><br />
+                    <span className="font-light" style={{ fontSize: '2rem' }}> Hi, I’m </span><br />
                     <span className="highlight-blue">Girish Garg</span>
                     <span className="font-light" style={{ fontSize: '1.2rem', display: 'block', marginTop: '0.5rem', lineHeight: '1.4' }}>
                         Full-Stack Developer crafting scalable web applications and secure backend systems.
